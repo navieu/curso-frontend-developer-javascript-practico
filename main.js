@@ -5,12 +5,17 @@ const menuHamIcon = document.querySelector('.menu');
 const mobileMennu = document.querySelector('.mobile-menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#product-detail');
 const cardsContainer = document.querySelector('.cards-container');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
 
 
 menuEmail.addEventListener('click', toogleDesktopMenu);
 menuHamIcon.addEventListener('click', toogleMobileMenu);
 menuCarritoIcon.addEventListener('click', toogleCarritoAside);
+productDetailCloseIcon.addEventListener('click',closeDetailAside);
+
+
 
 
 function toogleDesktopMenu(){
@@ -21,17 +26,20 @@ function toogleDesktopMenu(){
     //pongan unas a las otras cuando una se abre la otra se cierra
     shoppingCartContainer.classList.add('inactive');
     mobileMennu.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 }
 function toogleMobileMenu(){
     mobileMennu.classList.toggle('inactive');
     // lo mismo para cuando una se abra la otra se cierre
     shoppingCartContainer.classList.add('inactive');
     deskMenu.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 }
 function toogleCarritoAside(){
     shoppingCartContainer.classList.toggle('inactive');
     mobileMennu.classList.add('inactive');
     deskMenu.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 }
 
 
@@ -62,13 +70,26 @@ productList.push({
 // para las buenas practicas es recomendable hacer de esto una funcion
 // ejemplo
 
+function openProductAside(){
+    productDetailContainer.classList.remove('inactive');
+}
+
+function closeDetailAside(){
+    productDetailContainer.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
+}
+
+
 function renderProduct(arrayProducts){
+
     for (product of arrayProducts){
         const productCard= document.createElement('div');
         productCard.classList.add('product-card');
     
         const productImg = document.createElement('img');
         productImg.setAttribute('src',product.image);
+        productImg.addEventListener('click', openProductAside);
+        
     
         const productInfo= document.createElement('div');
         productInfo.classList.add('product-info');
