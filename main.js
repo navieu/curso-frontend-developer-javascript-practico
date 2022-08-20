@@ -4,7 +4,7 @@ const deskMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const mobileMennu = document.querySelector('.mobile-menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const aside = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 
@@ -19,17 +19,17 @@ function toogleDesktopMenu(){
     deskMenu.classList.toggle('inactive');
     // aqui lo que estamos haciendo es oculando las cajitas para que no se sobre
     //pongan unas a las otras cuando una se abre la otra se cierra
-    aside.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
     mobileMennu.classList.add('inactive');
 }
 function toogleMobileMenu(){
     mobileMennu.classList.toggle('inactive');
     // lo mismo para cuando una se abra la otra se cierre
-    aside.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
     deskMenu.classList.add('inactive');
 }
 function toogleCarritoAside(){
-    aside.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
     mobileMennu.classList.add('inactive');
     deskMenu.classList.add('inactive');
 }
